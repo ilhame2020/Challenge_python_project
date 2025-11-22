@@ -1,0 +1,41 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+  <h1>Students</h1>
+
+  <div class="mb-3">
+    <a class="btn btn-success" href="{{ url_for('add') }}">Add student</a>
+    <a class="btn btn-secondary" href="{{ url_for('save') }}">Save</a>
+  </div>
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Grade</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for s in students %}
+        <tr>
+          <td>{{ s.name }}</td>
+          <td>{{ s.age }}</td>
+          <td>{{ "%.2f" | format(s.grade) }}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+
+  <h3>Summary</h3>
+  <p>Average grade: <strong>{{ "%.2f" | format(avg) }}</strong></p>
+  <p>Best student: <strong>{% if best %}{{ best.name }} ({{ "%.2f" | format(best.grade) }}){% else %}N/A{% endif %}</strong></p>
+
+  <h4>Age groups</h4>
+  <ul>
+    {% for age, count in age_groups.items() %}
+      <li>{{ age }} years: {{ count }}</li>
+    {% endfor %}
+  </ul>
+
+{% endblock %}

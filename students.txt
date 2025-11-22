@@ -1,0 +1,8 @@
+Lina,18,16.5
+Omar,20,14.0
+amine,12,3.0
+ilhame bouzani,12,34.0
+Lina,18,16.5
+Omar,20,14.0
+amine,12,3.0
+ilhame bouzani,12,34.0

@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+  <h1>Upload students file</h1>
+
+  <p>Upload a text or CSV file where each line is: <code>Name,Age,Grade</code></p>
+
+  <form method="post" enctype="multipart/form-data">
+    <div class="mb-3">
+      <input class="form-control" type="file" name="file" accept=".txt,.csv,text/plain" required>
+    </div>
+    <button class="btn btn-primary" type="submit">Upload and Merge</button>
+    <a class="btn btn-link" href="{{ url_for('index') }}">Cancel</a>
+  </form>
+
+  <div class="mt-4">
+    <h5>Example file content</h5>
+    <pre>
+Lina,18,16.5
+Omar,20,14.0
+    </pre>
+  </div>
+
+{% endblock %}

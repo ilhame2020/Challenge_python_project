@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+  <h1>Failing Students</h1>
+
+  <form class="mb-3" method="get">
+    <label class="form-label">Threshold</label>
+    <input name="threshold" class="form-control" value="{{ threshold or '' }}" placeholder="e.g. 10">
+    <div class="mt-2">
+      <button class="btn btn-primary" type="submit">Filter</button>
+      <a class="btn btn-link" href="{{ url_for('index') }}">Back</a>
+    </div>
+  </form>
+
+  {% if students is not none %}
+    <h4>Results</h4>
+    <ul>
+      {% for s in students %}
+        <li>{{ s.name }} — {{ "%.2f" | format(s.grade) }}</li>
+      {% else %}
+        <li>No failing students found.</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+{% endblock %}
